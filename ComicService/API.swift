@@ -10,13 +10,14 @@ import Foundation
 
 public enum API {
     case suggestions(query: String)
+    case search(query: String, page: Int)
 }
 
 extension API: Resource {
     
     public var path: String {
         switch self {
-        case .suggestions:
+        case .suggestions, .search:
             return "search"
         }
     }
@@ -30,6 +31,15 @@ extension API: Resource {
                 "field_list": "name",
                 "limit": "10",
                 "page": "1",
+                "query": q,
+                "resources": "volume"
+            ]
+        case let .search(query: q, page: p):
+            return [
+                "format": "json",
+                "field_list": "id,image,name,publisher",
+                "limit": "20",
+                "page": "\(p)",
                 "query": q,
                 "resources": "volume"
             ]

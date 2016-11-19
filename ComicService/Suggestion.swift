@@ -12,6 +12,8 @@ public struct Suggestion {
     public let title: String
 }
 
+// MARK: - JSONDecodable
+
 extension Suggestion: JSONDecodable {
     
     public init?(dictionary: JSONDictionary) {

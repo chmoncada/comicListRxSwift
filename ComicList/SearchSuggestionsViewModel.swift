@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import ComicService
 
 /// Fetches suggestions for a given search query
 protocol SearchSuggestionsViewModelType: class {
@@ -18,14 +19,28 @@ protocol SearchSuggestionsViewModelType: class {
     var suggestions: Observable<[String]> { get }
 }
 
-// FIXME: This is a mock implementation
 final class SearchSuggestionsViewModel: SearchSuggestionsViewModelType {
 
     let query = Variable("")
 
-    private(set) lazy var suggestions: Observable<[String]> = self.query.asObservable()
-        .throttle(0.3, scheduler: MainScheduler.instance)
-        .map {
-            $0.characters.split(separator: " ").map { String($0) }
+    private(set) lazy var suggestions: Observable<[String]> = self.query
+        .asObservable()
+        .filter { query in
+            // ignore query strings with less than 3 characters
+            query.characters.count > 2
         }
+        .throttle(0.3, scheduler: MainScheduler.instance)
+        .flatMapLatest { query in
+            return self.client.suggestedTitles(forQuery: query)
+        }
+        .observeOn(MainScheduler.instance)
+        .shareReplay(1)
+    
+    private let client: Client
+    
+    init(client: Client = Client()) {
+        self.client = client
+    }
+    
+
 }

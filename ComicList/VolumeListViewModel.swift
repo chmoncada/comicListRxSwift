@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ComicContainer
 
 /// Represents a volume list view model
 protocol VolumeListViewModelType: class {

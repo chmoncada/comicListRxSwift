@@ -7,7 +7,8 @@
 //
 
 import UIKit
-@testable import ComicService
+//import RxSwift
+//@testable import ComicService
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         /// PRUEBAS
         
-        /* 1 Prueba de request
+        /*1 Prueba de request
         let resource = API.suggestions(query: "hola gente")
         let request = resource.request(withBaseURL: URL(string:"http://example.com")!, additionalParameters: [
                 "api_key": "jarl"
@@ -53,6 +54,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("response: \(response)")
             print("suggestions: \(suggestions)")
         }
+        */
+        
+        /*// 3 Prueba de Client
+        let client = Client()
+        let suggestions = client.suggestions(forQuery: "thanos")
+        
+        let _ = suggestions.subscribe(onNext: { suggestions in
+            print("results: \(suggestions)")
+            
+        })
         */
         
         /// FIN DE PRUEBAS
