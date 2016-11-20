@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import ComicContainer
+import ComicService
 
 protocol VolumeDetailViewModelType: class {
 
@@ -28,34 +29,55 @@ protocol VolumeDetailViewModelType: class {
     func addOrRemove()
 }
 
-// FIXME: This is a mock implementation
 final class VolumeDetailViewModel: VolumeDetailViewModelType {
 
     var isSaved: Observable<Bool> {
-        return Observable.just(true)
+        return saved.asObservable()
     }
 
     private(set) var volume: Volume
 
-    private(set) lazy var about: Observable<String?> = Observable.just(
-        "Quietooor quietooor ese hombree de la pradera. Caballo blanco caballo negroorl ese que llega apetecan ese pedazo de te voy a borrar el cerito a wan. Ahorarr tiene musho peligro a gramenawer te va a hasé pupitaa."
-    )
+    private(set) lazy var about: Observable<String?> = self.client.object(forResource: API.description(volumeIdentifier: self.volume.identifier))
+        .map { (value: VolumeDescription) -> String? in
+            if let htmlText = value.description {
+                let attributedText = try? NSAttributedString(data: htmlText.data(using: .utf8)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+                return attributedText?.string
+            }
+            return value.description
+        }
+        .startWith("")
+        .observeOn(MainScheduler.instance)
 
-    private(set) var issues: Observable<[Issue]> = Observable.just([
-        Issue(title: "Lorem fistrum", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/3/38919/1251093-thanos_imperative_1.jpg")),
-        Issue(title: "Quietooor ahorarr", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/0/9116/1299822-296612.jpg")),
-        Issue(title: "Apetecan", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/5/57845/1333458-cover.jpg")),
-        Issue(title: "Rodrigor mamaar", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/5/56213/1386494-thanos_imperative__4.jpg")),
-        Issue(title: "Benemeritaar", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/3/38919/1452486-thanos_imperative_5.jpg")),
-        Issue(title: "Caballo blanco caballo negroorl", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/3/38919/1503818-thanos_imperative_6.jpg")),
-        Issue(title: "Quietooor diodeno", coverURL: URL(string: "http://static.comicvine.com/uploads/scale_small/3/39027/4609736-4608485-cgxpqgqw0aao_8t+-+copy.jpg"))
-    ])
-
-    init(volume: Volume) {
+    private(set) lazy var issues: Observable<[Issue]> = self.client.objects(forResource: API.issues(volumeIdentifier: self.volume.identifier))
+        .observeOn(MainScheduler.instance)
+    
+    
+    private let container: VolumeContainerType
+    private let client: Client
+    private let saved: Variable<Bool>
+    
+    init(volume: Volume, container: VolumeContainerType = VolumeContainer.instance, client: Client = Client()) {
         self.volume = volume
+        self.container = container
+        self.client = client
+        
+        self.saved = Variable(container.contains(volumeWithIdentifier: volume.identifier))
     }
 
     func addOrRemove() {
-        // TODO: implement
+        
+        let observable: Observable<Void>
+        if saved.value {
+            observable = container.delete(volumeWithIdentifier: volume.identifier)
+        } else {
+            observable = container.save(volumes: [volume])
+        }
+        
+        let _ = observable
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: {
+                self.saved.value = !self.saved.value
+            })
+        
     }
 }

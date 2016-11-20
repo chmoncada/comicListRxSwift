@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import ComicContainer
 
 final class AppCoordinator: Coordinator {
 
     private let window: UIWindow
     private let navigationController = UINavigationController()
-
+    private let volumeContainer = VolumeContainer.instance
+    
     init(window: UIWindow) {
         self.window = window
     }
 
     override func start() {
+        // carga de Base de Datos de comics
+        let _ = volumeContainer.load()
+            .subscribe()
+        
         customizeAppearance()
         
         window.rootViewController = navigationController

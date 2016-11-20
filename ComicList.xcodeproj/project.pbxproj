@@ -85,6 +85,8 @@
 		A19154ED1DAF0C7A00D37B90 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19154EC1DAF0C7A00D37B90 /* Response.swift */; };
 		A19154EF1DAF0D2D00D37B90 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19154EE1DAF0D2D00D37B90 /* Suggestion.swift */; };
 		A19154F11DAF0FF100D37B90 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19154F01DAF0FF100D37B90 /* JSONDecodable.swift */; };
+		A1C9849F1DDFE76100FA601A /* VolumeContainer+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C9849E1DDFE76100FA601A /* VolumeContainer+List.swift */; };
+		A1C984B31DDFF62100FA601A /* VolumeDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C984B21DDFF62100FA601A /* VolumeDescription.swift */; };
 		A1D1495A1DDCC04300D5F58B /* TemporaryPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D149591DDCC04300D5F58B /* TemporaryPersistentContainer.swift */; };
 		A1D1496F1DDDFA6A00D5F58B /* Volume+JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1496E1DDDFA6A00D5F58B /* Volume+JSONDecodable.swift */; };
 		A1D149831DDE0B7400D5F58B /* Client+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D149821DDE0B7400D5F58B /* Client+Search.swift */; };
@@ -368,6 +370,8 @@
 		A19154EC1DAF0C7A00D37B90 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		A19154EE1DAF0D2D00D37B90 /* Suggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		A19154F01DAF0FF100D37B90 /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		A1C9849E1DDFE76100FA601A /* VolumeContainer+List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VolumeContainer+List.swift"; sourceTree = "<group>"; };
+		A1C984B21DDFF62100FA601A /* VolumeDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeDescription.swift; sourceTree = "<group>"; };
 		A1D149591DDCC04300D5F58B /* TemporaryPersistentContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemporaryPersistentContainer.swift; sourceTree = "<group>"; };
 		A1D1496E1DDDFA6A00D5F58B /* Volume+JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Volume+JSONDecodable.swift"; sourceTree = "<group>"; };
 		A1D149821DDE0B7400D5F58B /* Client+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Search.swift"; sourceTree = "<group>"; };
@@ -593,6 +597,7 @@
 				829847D91D9D8E4300C6A9C9 /* VolumeListViewController.swift */,
 				829847DA1D9D8E4300C6A9C9 /* VolumeListViewController.xib */,
 				82EC5EB61DA111140096F033 /* VolumeListViewModel.swift */,
+				A1C9849E1DDFE76100FA601A /* VolumeContainer+List.swift */,
 			);
 			name = "Volume List";
 			sourceTree = "<group>";
@@ -672,6 +677,7 @@
 			children = (
 				A19154EC1DAF0C7A00D37B90 /* Response.swift */,
 				A19154EE1DAF0D2D00D37B90 /* Suggestion.swift */,
+				A1C984B21DDFF62100FA601A /* VolumeDescription.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1105,6 +1111,7 @@
 				82EC5EAD1DA0E2210096F033 /* CoverView.swift in Sources */,
 				827789FB1DA268F900949E52 /* Issue.swift in Sources */,
 				827B6B6D1D9EAD45004EC14A /* UITableViewCell+ReusableView.swift in Sources */,
+				A1C9849F1DDFE76100FA601A /* VolumeContainer+List.swift in Sources */,
 				829847E51D9D962D00C6A9C9 /* SearchSuggestionsViewModel.swift in Sources */,
 				829847E31D9D944700C6A9C9 /* UISearchBar+Additions.swift in Sources */,
 				8225DC521DA28F4900DFF9FA /* SearchResultsCoordinator.swift in Sources */,
@@ -1152,6 +1159,7 @@
 				A166D2A61DCD90210051EF2E /* Client.swift in Sources */,
 				A19154ED1DAF0C7A00D37B90 /* Response.swift in Sources */,
 				A19154E71DAEEF8700D37B90 /* Resource.swift in Sources */,
+				A1C984B31DDFF62100FA601A /* VolumeDescription.swift in Sources */,
 				A19154EF1DAF0D2D00D37B90 /* Suggestion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

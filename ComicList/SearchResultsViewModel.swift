@@ -80,6 +80,9 @@ final class SearchResultsViewModel: SearchResultsViewModelType {
         
         
         return client.searchResults(forQuery: query, page: current)
+            .do(onNext: { _ in
+                    print("page: \(current)")
+            })
             .flatMap { volumes in
                 return container.save(volumes: volumes)
             }

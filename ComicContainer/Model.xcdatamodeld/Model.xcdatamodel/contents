@@ -4,7 +4,7 @@
         <attribute name="identifier" attributeType="Integer 64" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="insertionDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="publisher" attributeType="String" syncable="YES"/>
+        <attribute name="publisher" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
