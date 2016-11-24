@@ -57,3 +57,82 @@ final public class VolumeContainerRealm {
     }
     
 }
+
+extension VolumeContainerRealm: VolumeContainerType {
+    
+    public func all() -> VolumeResultsType {
+        
+        return VolumeResultsRealm(container: container)
+        
+    }
+    
+    public func contains(volumeWithIdentifier: Int) -> Bool {
+        
+        let predicate = NSPredicate(format: "identifier == %d", volumeWithIdentifier)
+        let results = container.objects(VolumeEntryRealm.self).filter(predicate)
+        
+        if results.count > 0 {
+            return true
+        } else {
+            return false
+        }
+        
+    }
+    
+    public func load() -> Observable<Void> {
+        
+        return Observable.create { observer in
+            
+//            self.container.loadPersistentStores { _, error in
+//                if let error = error {
+//                    observer.onError(error)
+//                } else {
+//                    observer.onNext()
+//                    observer.onCompleted()
+//                }
+//            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    public func save(volumes: [Volume]) -> Observable<Void> {
+        return performBackgroundTask { container in
+            try container.write {
+                for volume in volumes {
+                    let volumeEntryRealm = VolumeEntryRealm(volume: volume)
+                    container.add(volumeEntryRealm)
+                }
+            }
+        }
+    }
+    
+    public func delete(volumeWithIdentifier: Int) -> Observable<Void> {
+        return performBackgroundTask { container in
+            try container.write {
+                let predicate = NSPredicate(format: "identifier == %d", volumeWithIdentifier)
+                let result = container.objects(VolumeEntryRealm.self).filter(predicate).first
+                container.delete(result!)
+            }
+        }
+    }
+    
+    private func performBackgroundTask(_ task: @escaping (Realm) throws -> Void) -> Observable<Void> {
+        
+        return Observable.create { observer in
+            
+            do {
+                try task(self.container)
+                observer.onNext()
+                observer.onCompleted()
+            } catch {
+                observer.onError(error)
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    
+    
+}

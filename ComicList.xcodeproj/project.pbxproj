@@ -76,6 +76,7 @@
 		A12BFFAD1DD834D20082B490 /* VolumeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12BFFAC1DD834D20082B490 /* VolumeEntry.swift */; };
 		A166D2A61DCD90210051EF2E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = A166D2A51DCD90210051EF2E /* Client.swift */; };
 		A166D2BA1DCD9A270051EF2E /* Client+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A166D2B91DCD9A270051EF2E /* Client+API.swift */; };
+		A1856A601DE67AA100E467ED /* VolumeResultsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1856A5F1DE67AA100E467ED /* VolumeResultsRealm.swift */; };
 		A19154DC1DAEED8A00D37B90 /* ComicService.h in Headers */ = {isa = PBXBuildFile; fileRef = A19154DA1DAEED8A00D37B90 /* ComicService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A19154DF1DAEED8A00D37B90 /* ComicService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19154D81DAEED8A00D37B90 /* ComicService.framework */; };
 		A19154E01DAEED8A00D37B90 /* ComicService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A19154D81DAEED8A00D37B90 /* ComicService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -373,6 +374,7 @@
 		A12BFFAC1DD834D20082B490 /* VolumeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeEntry.swift; sourceTree = "<group>"; };
 		A166D2A51DCD90210051EF2E /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		A166D2B91DCD9A270051EF2E /* Client+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+API.swift"; sourceTree = "<group>"; };
+		A1856A5F1DE67AA100E467ED /* VolumeResultsRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeResultsRealm.swift; sourceTree = "<group>"; };
 		A19154D81DAEED8A00D37B90 /* ComicService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ComicService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19154DA1DAEED8A00D37B90 /* ComicService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComicService.h; sourceTree = "<group>"; };
 		A19154DB1DAEED8A00D37B90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -716,6 +718,7 @@
 			children = (
 				A1ED762F1DE541F60027A966 /* VolumeContainerRealm.swift */,
 				A106C8CE1DE5509D00A6360A /* VolumeEntryRealm.swift */,
+				A1856A5F1DE67AA100E467ED /* VolumeResultsRealm.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -1197,6 +1200,7 @@
 			files = (
 				A1D1495A1DDCC04300D5F58B /* TemporaryPersistentContainer.swift in Sources */,
 				A12BFFA41DD829D10082B490 /* VolumeContainer.swift in Sources */,
+				A1856A601DE67AA100E467ED /* VolumeResultsRealm.swift in Sources */,
 				A12BFFA81DD82F810082B490 /* VolumeResults.swift in Sources */,
 				A12BFFAD1DD834D20082B490 /* VolumeEntry.swift in Sources */,
 				A106C8CF1DE5509D00A6360A /* VolumeEntryRealm.swift in Sources */,

@@ -59,7 +59,7 @@ final class SearchResultsViewModel: SearchResultsViewModelType {
     
     init(query: String,
          client: Client = Client(),
-         container: VolumeContainerType = VolumeContainer.temporary()) {
+         container: VolumeContainerType = VolumeContainerRealm.temporary()) {
         self.query = query
         self.client = client
         self.container = container
@@ -80,9 +80,7 @@ final class SearchResultsViewModel: SearchResultsViewModelType {
         
         
         return client.searchResults(forQuery: query, page: current)
-            .do(onNext: { _ in
-                    print("page: \(current)")
-            })
+            .observeOn(MainScheduler.instance)
             .flatMap { volumes in
                 return container.save(volumes: volumes)
             }

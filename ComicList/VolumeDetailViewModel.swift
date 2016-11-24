@@ -56,7 +56,7 @@ final class VolumeDetailViewModel: VolumeDetailViewModelType {
     private let client: Client
     private let saved: Variable<Bool>
     
-    init(volume: Volume, container: VolumeContainerType = VolumeContainer.instance, client: Client = Client()) {
+    init(volume: Volume, container: VolumeContainerType = VolumeContainerRealm.instance , client: Client = Client()) {
         self.volume = volume
         self.container = container
         self.client = client

@@ -14,3 +14,9 @@ extension VolumeContainer {
     static let instance = VolumeContainer(name: "Comics")
     
 }
+
+extension VolumeContainerRealm {
+    
+    static let instance = VolumeContainerRealm(name: "Comics")
+    
+}

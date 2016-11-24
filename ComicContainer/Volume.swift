@@ -40,5 +40,12 @@ extension Volume {
         self.publisherName = entry.publisher
     }
     
+    internal init(entryRealm: VolumeEntryRealm) {
+        self.identifier = entryRealm.identifier
+        self.title = entryRealm.title
+        self.coverURL = entryRealm.coverURL(entryRealm.imageURL)
+        self.publisherName = entryRealm.publisher
+    }
+    
     
 }
